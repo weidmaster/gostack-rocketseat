@@ -29,3 +29,4 @@ Poderá ser adicionada uma entrada ```scripts``` que definirá comandos personal
   Insomnia: https://insomnia.rest/ 🔗
   - Workspaces pra cada projeto
   - Pastas para cada recurso
+  - Environments para variáveis globais, como ```base_url```
