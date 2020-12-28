@@ -3,8 +3,10 @@ const express = require('express');
 
 const app = express();
 
-app.get('/projects', (request, response) => {
-    return response.send('Hello World');
+// Routes
+app.get('/', (request, response) => {
+    return response.json({ message: 'Hello World' });
 });
 
+// create http server, accessible by http://localhost:3333
 app.listen(3333);
