@@ -1,10 +1,13 @@
 {
   "name": "gostack-rocketseat",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/index.js",
   "repository": "https://github.com/weidmaster/gostack-rocketseat.git",
   "author": "Eduardo WB <eduardo@agenciacrow.com.py>",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon"
+  },
   "dependencies": {
     "express": "^4.17.1"
   },
