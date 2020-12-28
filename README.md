@@ -27,3 +27,5 @@ Poderá ser adicionada uma entrada ```scripts``` que definirá comandos personal
   ## Ferramentas
   ### Testes de API e métodos HTTP
   Insomnia: https://insomnia.rest/ 🔗
+  - Workspaces pra cada projeto
+  - Pastas para cada recurso
