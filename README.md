@@ -23,3 +23,7 @@ Poderá ser adicionada uma entrada ```scripts``` que definirá comandos personal
   Isso cria um comando chamado ```dev``` que inicia o nodemon, monitorando o script inicial apontado na entrada main.
 
   É o mesmo que chamar ```yarn nodemon src/index.js``` direto pelo terminal. No entanto a chamada fica simplificada, sendo necessário apenas usar ```yarn dev```
+
+  ## Ferramentas
+  ### Testes de API e métodos HTTP
+  Insomnia: https://insomnia.rest/ 🔗
