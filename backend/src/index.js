@@ -1,6 +1,6 @@
 const { request, response } = require('express');
 const express = require('express');
-const { uuid } = require('uuidv4');
+const { uuid, isUuid } = require('uuidv4');
 
 const app = express();
 
@@ -33,6 +33,7 @@ app.use(express.json());
 
 const projects = [];
 
+// Middleware sem interromper requisição
 function logRequests(request, response, next) {
     const { method, url } = request;
 
@@ -43,7 +44,19 @@ function logRequests(request, response, next) {
     return next(); // próximo Middleware
 } 
 
-app.use(logRequests);
+// Middleware que interrompe a requisição
+function validateProjectId(request, response, next) {
+    const { id } = request.params;
+
+    if (!isUuid(id)) {
+        return response.status(400).json({ error: 'Invalid project ID.' });
+    }
+
+    return next();
+}
+
+app.use(logRequests); // Middleware aplicado em todas as rotas
+app.use('/projects/:id', validateProjectId); // Middleware aplicado apenas nas rotas do formato especificado
 
 // Routes
 app.get('/projects', (request, response) => {
