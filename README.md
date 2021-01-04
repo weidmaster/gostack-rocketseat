@@ -46,6 +46,7 @@ Poderá ser adicionada uma entrada ```scripts``` que definirá comandos personal
   - ```yarn add webpack-dev-server -D``` servidor de desenvolvimento
   - ```yarn add babel-loader``` converte arquivos javascript usando o babel
   - ```yarn add style-loader css-loader``` interpreta arquivos CSS e injeta no HTML
+  - ```yarn add file-loader``` interpreta arquivos dentro da aplicação
   - ```yarn webpack --mode development``` roda o webpack em modo de desenvolvimento
   - ```yearn webpack serve --mode development``` roda o servidor em modo de desenvolvimento
 
