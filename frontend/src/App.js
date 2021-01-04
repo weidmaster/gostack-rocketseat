@@ -16,7 +16,15 @@ import Header from './components/Header';
  */
 
 function App() {
-    const [projects, setProjects] = useState(['Desenvolvimento de app', 'Front-end web']);
+    const [projects, setProjects] = useState([]);
+
+    // inicializar o useState com o mesmo tipo de dado esperado pela variável
+
+    /** 
+     * useState retorna um array com 2 posições
+     * 1. variável com o seu valor inicial
+     * 2. função para atualizar o valor
+     */
 
     /**
      * useEffect - dispara uma função quando determinada condição é satisfeita
@@ -28,15 +36,9 @@ function App() {
 
     useEffect(() => {
         api.get('projects').then(response => {
-            console.log(response);
+            setProjects(response.data);
         });
     }, []);
-
-    /** 
-     * useState retorna um array com 2 posições
-     * 1. variável com o seu valor inicial
-     * 2. função para atualizar o valor
-     */
 
     function handleAddProject() {
         //projects.push(`Novo projeto ${Date.now()}`); // forma clássica. Não atualiza o front
@@ -57,7 +59,7 @@ function App() {
             <Header title="Projects" />
 
             <ul>
-                {projects.map(project => <li key={project}>{project}</li>)}
+                {projects.map(project => <li key={project.id}>{project.title}</li>)}
             </ul>
 
             <button type="button" onClick={handleAddProject}>Adicionar projeto</button>
