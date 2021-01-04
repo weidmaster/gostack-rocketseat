@@ -1,8 +1,11 @@
 const { request, response } = require('express');
 const express = require('express');
+const cors = require('cors');
 const { uuid, isUuid } = require('uuidv4');
 
 const app = express();
+
+app.use(cors());
 
 // Express não aceita o formato JSON como padrão. Essa linha muda esse comportamento.
 app.use(express.json());
