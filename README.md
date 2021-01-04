@@ -43,3 +43,4 @@ Poderá ser adicionada uma entrada ```scripts``` que definirá comandos personal
   - Utiliza loaders (carregadores) para cada tipo de arquivo. Se não tiver um loader específico, o arquivo não será interpretado dentro do javascript
   - ```yarn add webpack webpack-cli```
   - ```yarn add babel-loader``` converte arquivos javascript usando o babel
+  - ```yarn webpack --mode development``` roda o webpack em modo de desenvolvimento
