@@ -49,6 +49,8 @@ Poderá ser adicionada uma entrada ```scripts``` que definirá comandos personal
   - ```yarn webpack --mode development``` roda o webpack em modo de desenvolvimento
   - ```yearn webpack serve --mode development``` roda o servidor em modo de desenvolvimento
 
+  **Atenção!** Se alterar qualquer configuração do ```webpack.config.js``` é necessário reiniciar o webpack
+
   ### Emmet
   - Configuração para JSX
   ```json
