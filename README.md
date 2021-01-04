@@ -33,6 +33,9 @@ Poderá ser adicionada uma entrada ```scripts``` que definirá comandos personal
   - Pastas para cada recurso
   - Environments para variáveis globais, como ```base_url```
 
+  ### Axios
+  - Para realizar chamadas de API do backend pelo frontend
+
   ### Babel
   - Serve para converter (transpilar) códigos React para códigos que o navegador entenda
   - ```yarn add @babel/core @babel/preset-env @babel/preset-react @babel/cli```
