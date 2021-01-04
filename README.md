@@ -3,6 +3,8 @@ Acompanhamento das aulas e consolidação do aprendizado, assim como histórico 
 
 ## yarn
 
+```yarn init -y``` cria o arquivo package.json com configurações do projeto
+
 ```yarn add <module>``` adiciona um módulo geral
 
 ```yarn add <module> -D``` adiciona um módulo apenas para desenvolvimento
