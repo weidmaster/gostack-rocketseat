@@ -35,6 +35,8 @@ Poderá ser adicionada uma entrada ```scripts``` que definirá comandos personal
 
   ### Axios
   - Para realizar chamadas de API do backend pelo frontend
+  - ```yarn add axios```
+  - ```yarn add cors``` instalar no backend para permitir acesso da API pelo frontend
 
   ### Babel
   - Serve para converter (transpilar) códigos React para códigos que o navegador entenda

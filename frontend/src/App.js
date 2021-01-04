@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import api from './services/api';
 
 import './App.css';
-import backgroundImage from './assets/background.webp';
 
 import Header from './components/Header';
 
@@ -17,6 +17,20 @@ import Header from './components/Header';
 
 function App() {
     const [projects, setProjects] = useState(['Desenvolvimento de app', 'Front-end web']);
+
+    /**
+     * useEffect - dispara uma função quando determinada condição é satisfeita
+     * Recebe 2 argumentos: a função e quando quer disparar a mesma.
+     * Se a ideia é disparar apenas quando o componente for exibido em tela a primeira vez, o segundo argumento é um
+     * array vazio, caso contrário, o array é definido com as dependências, ou seja, as variáveis que devem ser observadas
+     * que ao serem alteradas realização o disparo da função.
+     */
+
+    useEffect(() => {
+        api.get('projects').then(response => {
+            console.log(response);
+        });
+    }, []);
 
     /** 
      * useState retorna um array com 2 posições
@@ -41,8 +55,6 @@ function App() {
     return (
         <>
             <Header title="Projects" />
-
-            <img width={300} src={backgroundImage} alt=""/>
 
             <ul>
                 {projects.map(project => <li key={project}>{project}</li>)}
