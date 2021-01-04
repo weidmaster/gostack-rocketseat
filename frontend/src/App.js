@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import './App.css';
+
 import Header from './components/Header';
 
 // qualquer componente em React é uma função javascript que retorna HTML
