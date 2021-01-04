@@ -35,7 +35,7 @@ Poderá ser adicionada uma entrada ```scripts``` que definirá comandos personal
 
   ### Babel
   - Serve para converter (transpilar) códigos React para códigos que o navegador entenda
-  - ```yarn add @babel/core @babel/preset-env @babel/preset-react```
+  - ```yarn add @babel/core @babel/preset-env @babel/preset-react @babel/cli```
 
   ### Webpack
   - Pra cada tipo de arquivo (.js, .css, .png, ...) irá converter o código de uma maneira diferente
