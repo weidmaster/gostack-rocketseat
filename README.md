@@ -41,6 +41,9 @@ Poderá ser adicionada uma entrada ```scripts``` que definirá comandos personal
   ### Webpack
   - Pra cada tipo de arquivo (.js, .css, .png, ...) irá converter o código de uma maneira diferente
   - Utiliza loaders (carregadores) para cada tipo de arquivo. Se não tiver um loader específico, o arquivo não será interpretado dentro do javascript
+  - O servidor possui ```live reloading```. Isso significa que a página será recarregada automaticamente quando atualizar os arquivos
   - ```yarn add webpack webpack-cli```
+  - ```yarn add webpack-dev-server -D``` servidor de desenvolvimento
   - ```yarn add babel-loader``` converte arquivos javascript usando o babel
   - ```yarn webpack --mode development``` roda o webpack em modo de desenvolvimento
+  - ```yearn webpack serve --mode development``` roda o servidor em modo de desenvolvimento
