@@ -40,14 +40,23 @@ function App() {
         });
     }, []);
 
-    function handleAddProject() {
+    async function handleAddProject() {
         //projects.push(`Novo projeto ${Date.now()}`); // forma clássica. Não atualiza o front
 
         // No React devemos evitar utilizar funções que alteram variáveis e sim recriar essas variáveis com novos valores
 
-        setProjects([...projects, `Novo projeto ${Date.now()}` ])
+        //setProjects([...projects, `Novo projeto ${Date.now()}` ])
 
         // Imutabilidade. Copia o valor de projects e adiciona novo valor, atualizando o front
+
+        const response = await api.post('projects', {
+            title: `Novo projeto ${Date.now()}`,
+            owner: "Eduardo WB"
+        });
+
+        const project = response.data;
+
+        setProjects([...projects, project]);
     }
 
     /** Para podermos retornar vários componentes em sequência, precisamos agrupar

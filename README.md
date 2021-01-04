@@ -40,8 +40,8 @@ Poderá ser adicionada uma entrada ```scripts``` que definirá comandos personal
 
   ### Babel
   - Serve para converter (transpilar) códigos React para códigos que o navegador entenda
-  - ```yarn add @babel/core @babel/preset-env @babel/preset-react @babel/cli```
-  - ```yarn babel <modern_js_file.js> --out-file <compiled_js_file.js>```
+  - ```yarn add @babel/core @babel/preset-env @babel/preset-react @babel/cli @babel/plugin-transform-runtime```
+  - ```yarn babel <modern_js_file.js> --out-file <compiled_js_file.js>``` para compilar um arquivo JS moderno em JS que o navegador entenda
 
   ### Webpack
   - Pra cada tipo de arquivo (.js, .css, .png, ...) irá converter o código de uma maneira diferente
