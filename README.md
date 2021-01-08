@@ -67,3 +67,24 @@ Poderá ser adicionada uma entrada ```scripts``` que definirá comandos personal
     "javascript": "javascriptreact"
   }
   ```
+
+  ### Typescript
+  - melhora o intellisense da IDE
+  - ajuda a escrever código mais correto
+  - permite utilizar os últimos recursos da linguagem
+  - é um superset do javascript. Isso significa que um arquivo typescript é um arquivo javascript válido
+  - utiliza extensão ```.ts```
+  - ```yarn add typescript -D```
+  - ```yarn tsc --init``` gera o arquivo de configuração do typescript ```tsconfig.json```
+  - ```yarn tsc``` para gerar o arquivo javascript compilado
+
+    **Atenção!** O Typescript utiliza arquivos de definição de tipos e caso ocorra algum erro informando que o tipo não existe, instale as definições de tipo utilizando ```yarn add @types/<componente> -D```
+
+### Ts-node-dev
+- ajuda durante o desenvolvimento pra rodar código typescript diretamente
+- faz os dois papéis tanto do ```tsc``` quanto do ```nodemon```, compilando e recarregando quando o código é alterado
+- ```yarn add ts-node-dev -D```
+- ```yarn ts-node-dev --transpile-only --ignore-watch node_modules src/<arquivo.ts>```
+
+  - **transpile-only**: não faz a verificação de tipos durante a compilação. A verificação é realizada pela IDE
+  - **ignore-watch node_modules**: não tenta compilar e executar typescript dentro da pasta node_modules, pois a mesma é de componentes de terceiros
