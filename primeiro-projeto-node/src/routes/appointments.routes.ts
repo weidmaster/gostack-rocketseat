@@ -27,7 +27,12 @@ appointmentsRouter.post("/", (request, response) => {
             .json({ message: "This appointment is already booked" });
     }
 
-    const appointment = appointmentsRepository.create(provider, parsedDate);
+    // Utilizar parâmetros nomeados ajuda na hora de debugar. Quando faltar algum parêmtro, será avisado exatamente
+    // qual é. Quando usamos normal, a mensagem vem genérica (esperado 3 parâmetros mas só enviou 2, por exemplo)
+    const appointment = appointmentsRepository.create({
+        provider,
+        date: parsedDate,
+    });
 
     return response.json(appointment);
 });
