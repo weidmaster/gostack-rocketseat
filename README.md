@@ -88,3 +88,19 @@ Poderá ser adicionada uma entrada ```scripts``` que definirá comandos personal
 
   - **transpile-only**: não faz a verificação de tipos durante a compilação. A verificação é realizada pela IDE
   - **ignore-watch node_modules**: não tenta compilar e executar typescript dentro da pasta node_modules, pois a mesma é de componentes de terceiros
+
+## Padronização de código
+### EditorConfig
+- auxilia na padronização da configuração para desenvolvedores trabalhando no mesmo projeto, mas com editores ou IDEs diferentes
+- VSCode: EditorConfig for VS Code (EditorConfig)
+
+  - Botão direito na pasta do projeto -> ```Generate .editorconfig``` 
+
+- alterar as opções ```trim_trailing_whitespace``` e ```insert_final_new_line``` para ```true```
+- adicionar a opção ```end_of_line = lf```
+
+  - padroniza as quebras de linha entre os sistemas operacionais
+
+- abrir e salvar os arquivos do projeto novamente para garantir que a formatação esteja correta
+### ESLint
+### Prettier
