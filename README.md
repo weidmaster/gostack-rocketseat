@@ -104,4 +104,72 @@ Poderá ser adicionada uma entrada ```scripts``` que definirá comandos personal
 - abrir e salvar os arquivos do projeto novamente para garantir que a formatação esteja correta
 - documentação oficial: https://editorconfig.org/
 ### ESLint
+- automatiza padrões de código javascript
+- VSCode: ESLint (Dirk Baeumer)
+
+  - Adicionar nas configurações:
+
+  ```json
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+  ```
+
+  formata o código sempre que salva algum arquivo
+
+- Node
+
+  - ```yarn add eslint -D```
+  - ```yarn eslint --init```
+
+    1. How would you like to use Eslint? ```To check syntax, find problems and enforce code style```
+    1. What type of modules does your project use? ```Javascript modules (import/export)```
+        - Para typescript
+    1. Which framework does your project use? ```None of these```
+        - para backend
+    1. Does your project use Typescript? ```Yes```
+    1. Where does your code run? ```Node```
+    1. How would you like to define a style for your project? ```Use a popular style guide```
+    1. Which style guide do you want to follow? ```Airbnb```
+    1. What format do you want your config file to be in? ```JSON```
+    1. Would you like to install them now with npm? ```No```
+
+        - copiar os pacotes listados para instalar com yarn, removendo apenas o eslint que já foi instalado e usar ```yarn add <pacotes copiados>```
+
+  - Após instalar as dependências, criar na raíz do projeto o arquivo ```.eslintignore``` com as linhas abaixo:
+
+  ```
+  /*.js
+  node_modules
+  dist
+  ```
+
+  - ```yarn add eslint-import-resolver-typescript -D``` faz com que o NodeJS consiga entender arquivos Typescript na importação
+
+  - Editar o arquivo ```.eslintrc.json```
+
+    - adicionar em **extends**: ```"plugin@typescript-eslint/recommended"```
+    - adicionar abaixo de **rules**:
+
+    ```json
+    "settings": {
+      "import/resolver": {
+        "typescript": {}
+      }
+    }
+    ```
+
+    - adicionar dentro de **rules**:
+
+    ```json
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never"
+      }
+    ]
+    ```
+
+  - Para aplicar todas as mudanças, reiniciar a IDE
 ### Prettier
