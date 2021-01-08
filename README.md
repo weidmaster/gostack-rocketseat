@@ -102,5 +102,6 @@ Poderá ser adicionada uma entrada ```scripts``` que definirá comandos personal
   - padroniza as quebras de linha entre os sistemas operacionais
 
 - abrir e salvar os arquivos do projeto novamente para garantir que a formatação esteja correta
+- documentação oficial: https://editorconfig.org/
 ### ESLint
 ### Prettier
