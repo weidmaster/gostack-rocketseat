@@ -1,16 +1,14 @@
 import { Router } from "express";
-import { v4 as uuid } from "uuid";
 import { startOfHour, parseISO, isEqual } from "date-fns";
+import Appointment from "../models/Appointment";
+
+/**
+ * Sempre que formos criar um tipo de dado que será armazenado na aplicação, criaremos um modelo.
+ * Seja em memória ou banco de dados.
+ * Exemplo: Appointment
+ */
 
 const appointmentsRouter = Router();
-
-// Quando temos erros do typo any[] no typescript, precisamos definir a tipagem.
-// usamos interface para tipar dados complexos
-interface Appointment {
-    id: string;
-    provider: string;
-    date: Date;
-}
 
 const appointments: Appointment[] = []; // define um array de Appointment
 
@@ -29,11 +27,7 @@ appointmentsRouter.post("/", (request, response) => {
             .json({ message: "This appointment is already booked" });
     }
 
-    const appointment = {
-        id: uuid(),
-        provider,
-        date: parsedDate,
-    };
+    const appointment = new Appointment(provider, parsedDate);
 
     appointments.push(appointment);
 
