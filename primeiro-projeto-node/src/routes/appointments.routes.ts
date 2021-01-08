@@ -1,9 +1,13 @@
 import { Router } from "express";
-import { startOfHour, parseISO } from "date-fns";
+import { parseISO } from "date-fns";
 import AppointmentsRepository from "../repositories/AppointmentsRepository";
+import CreateAppointmentService from "../services/CreateAppointmentService";
 
 const appointmentsRouter = Router();
 const appointmentsRepository = new AppointmentsRepository();
+
+// Rota - Deve se preocupar apenas com receber a requisição, chamar outro arquivo e devolver uma resposta
+// Quando temos mais funcionalidades além disso, provavelmente queremos abstrair em um serviço.
 
 appointmentsRouter.get("/", (request, response) => {
     const appointments = appointmentsRepository.all();
@@ -13,28 +17,24 @@ appointmentsRouter.get("/", (request, response) => {
 
 // POST http://localhost:3333/appointments
 appointmentsRouter.post("/", (request, response) => {
-    const { provider, date } = request.body;
+    try {
+        const { provider, date } = request.body;
 
-    const parsedDate = startOfHour(parseISO(date)); // parseISO - converte uma data em formato string para um objeto Date
+        const parsedDate = parseISO(date); // apenas transformação de dados não vai para serviço
 
-    const findAppointmentInSameDate = appointmentsRepository.findByDate(
-        parsedDate
-    );
+        const createAppointmentService = new CreateAppointmentService(
+            appointmentsRepository
+        );
 
-    if (findAppointmentInSameDate) {
-        return response
-            .status(400)
-            .json({ message: "This appointment is already booked" });
+        const appointment = createAppointmentService.execute({
+            date: parsedDate,
+            provider,
+        });
+
+        return response.json(appointment);
+    } catch (err) {
+        return response.status(400).json({ error: err.message });
     }
-
-    // Utilizar parâmetros nomeados ajuda na hora de debugar. Quando faltar algum parêmtro, será avisado exatamente
-    // qual é. Quando usamos normal, a mensagem vem genérica (esperado 3 parâmetros mas só enviou 2, por exemplo)
-    const appointment = appointmentsRepository.create({
-        provider,
-        date: parsedDate,
-    });
-
-    return response.json(appointment);
 });
 
 export default appointmentsRouter;
