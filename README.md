@@ -105,6 +105,7 @@ Poderá ser adicionada uma entrada ```scripts``` que definirá comandos personal
 - documentação oficial: https://editorconfig.org/
 ### ESLint
 - automatiza padrões de código javascript
+- documentação oficial: https://eslint.org/docs/rules/
 - VSCode: ESLint (Dirk Baeumer)
 
   - Adicionar nas configurações:
@@ -173,3 +174,46 @@ Poderá ser adicionada uma entrada ```scripts``` que definirá comandos personal
 
   - Para aplicar todas as mudanças, reiniciar a IDE
 ### Prettier
+- ajuda na padronização do código, formatando o mesmo
+- documentação oficial: https://prettier.io/docs/en/options.html
+- VSCode: remover extensão ```Prettier - Code Formatter```
+- ```yarn add prettier eslint-config-prettier eslint-plugin-prettier -D```
+
+  - Adiciona dependências responsáveis pela formatação e integração com ESLint
+
+- modificar o arquivo ```.eslintrc.json```:
+
+  - adicionar em **extends**
+
+  ```json
+  "prettier/@typescript-eslint",
+  "plugin:prettier/recommended"
+  ```
+
+  - adicionar em **plugins**
+
+  ```"prettier"```
+
+  - adicionar em **rules**
+
+  ```json
+  "prettier/prettier": "error"
+  ```
+
+  indica para o ESLint mostrar todos os erros aonde a regra do Prettier não estiverem sendo seguidas.
+
+- criar o arquivo ```prettier.config.js``` na raíz do projeto
+
+```js
+module.exports = {
+  singleQuote: true,
+  trailingComma: 'all',
+  arrowParens: 'avoid',
+}
+```
+
+  - **singleQuote**: utiliza apóstrofos (')
+  - **trailingComma**: adiciona vírgula sempre no final
+  - **arrowParens**: não adiciona parênteses quando uma Arrow Function tiver apenas um parâmetro
+
+- abrir os arquivos do projeto e salvar novamente para garantir que o código seja formatado corretamente.
