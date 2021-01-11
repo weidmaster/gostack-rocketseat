@@ -1,7 +1,7 @@
-import { startOfHour } from "date-fns";
+import { startOfHour } from 'date-fns';
 
-import Appointment from "../models/Appointment";
-import AppointmentsRepository from "../repositories/AppointmentsRepository";
+import Appointment from '../models/Appointment';
+import AppointmentsRepository from '../repositories/AppointmentsRepository';
 
 // Serviço: responsável pelas regras de negócio da aplicação.
 // Apenas uma única e exclusiva funcionalidade, ou seja, um único método
@@ -33,13 +33,13 @@ class CreateAppointmentService {
         const appointmentDate = startOfHour(date);
 
         const findAppointmentInSameDate = this.appointmentsRepository.findByDate(
-            appointmentDate
+            appointmentDate,
         );
 
         if (findAppointmentInSameDate) {
             // O serviço não tem acesso direto aos dados da requisição e resposta da rota. Então lançamentos a exceção
             // a ser tratada pela rota
-            throw Error("This appointment is already booked");
+            throw Error('This appointment is already booked');
         }
 
         // Utilizar parâmetros nomeados ajuda na hora de debugar. Quando faltar algum parêmtro, será avisado exatamente
