@@ -217,3 +217,19 @@ module.exports = {
   - **arrowParens**: não adiciona parênteses quando uma Arrow Function tiver apenas um parâmetro
 
 - abrir os arquivos do projeto e salvar novamente para garantir que o código seja formatado corretamente.
+
+## Docker
+
+```lsof -i :5432``` verifica se a porta 5432 está ocupada
+
+```docker run --name <nome-do-container> -e POSTGRES_PASSWORD=<senha> -p 5432:5432 -d postgres``` executa uma imagem do PostgreSQL com nome especificado e porta 5432, usando senha especificada
+
+```docker ps``` exibe containeres em execução
+
+```docker ps -a``` exibe todos os containeres instalados e seu status
+
+```docker logs <ID do container>``` exibe logs do container especificado
+
+```docker stop <ID do container>``` para um container em execução
+
+```docker start <ID do container>``` inicia um container
