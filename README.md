@@ -269,6 +269,9 @@ https://typeorm.io/#/
     "username": "posgres",
     "password": "docker",
     "database": "gostack_gobarber",
+    "entities": [
+        "./src/models/*.ts"
+    ],
     "migrations": [
         "./src/database/migrations/*.ts"
     ],
