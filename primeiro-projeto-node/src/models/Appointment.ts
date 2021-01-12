@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+    Entity,
+    Column,
+    PrimaryGeneratedColumn,
+    CreateDateColumn,
+    UpdateDateColumn,
+} from 'typeorm';
 
 // chamamos de Entidade algo que será salvo no banco de dados
 
@@ -25,6 +31,12 @@ class Appointment {
 
     @Column('timestamp with time zone')
     date: Date;
+
+    @CreateDateColumn()
+    created_at: Date;
+
+    @UpdateDateColumn()
+    updated_at: Date;
 
     // não é necessário mais utilizar o construtor em uma classe do tipo Entidade do typeorm
 }
