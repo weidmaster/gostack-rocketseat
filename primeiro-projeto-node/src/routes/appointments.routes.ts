@@ -1,32 +1,31 @@
 import { Router } from 'express';
 import { parseISO } from 'date-fns';
+import { getCustomRepository } from 'typeorm';
 import AppointmentsRepository from '../repositories/AppointmentsRepository';
 import CreateAppointmentService from '../services/CreateAppointmentService';
 
 const appointmentsRouter = Router();
-const appointmentsRepository = new AppointmentsRepository();
 
 // Rota - Deve se preocupar apenas com receber a requisição, chamar outro arquivo e devolver uma resposta
 // Quando temos mais funcionalidades além disso, provavelmente queremos abstrair em um serviço.
 
 appointmentsRouter.get('/', (request, response) => {
-    const appointments = appointmentsRepository.all();
+    const appointmentsRepository = getCustomRepository(AppointmentsRepository);
+    const appointments = appointmentsRepository.find();
 
     return response.json(appointments);
 });
 
 // POST http://localhost:3333/appointments
-appointmentsRouter.post('/', (request, response) => {
+appointmentsRouter.post('/', async (request, response) => {
     try {
         const { provider, date } = request.body;
 
         const parsedDate = parseISO(date); // apenas transformação de dados não vai para serviço
 
-        const createAppointmentService = new CreateAppointmentService(
-            appointmentsRepository,
-        );
+        const createAppointmentService = new CreateAppointmentService();
 
-        const appointment = createAppointmentService.execute({
+        const appointment = await createAppointmentService.execute({
             date: parsedDate,
             provider,
         });
