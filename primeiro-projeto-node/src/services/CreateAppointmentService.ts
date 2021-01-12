@@ -1,4 +1,5 @@
 import { startOfHour } from 'date-fns';
+import { getCustomRepository } from 'typeorm';
 
 import Appointment from '../models/Appointment';
 import AppointmentsRepository from '../repositories/AppointmentsRepository';
@@ -23,16 +24,13 @@ interface Request {
  */
 
 class CreateAppointmentService {
-    private appointmentsRepository: AppointmentsRepository;
-
-    constructor(appointmentsRepository: AppointmentsRepository) {
-        this.appointmentsRepository = appointmentsRepository;
-    }
-
-    public execute({ date, provider }: Request): Appointment {
+    public async execute({ date, provider }: Request): Promise<Appointment> {
+        const appointmentsRepository = getCustomRepository(
+            AppointmentsRepository,
+        );
         const appointmentDate = startOfHour(date);
 
-        const findAppointmentInSameDate = this.appointmentsRepository.findByDate(
+        const findAppointmentInSameDate = appointmentsRepository.findByDate(
             appointmentDate,
         );
 
@@ -44,10 +42,14 @@ class CreateAppointmentService {
 
         // Utilizar parâmetros nomeados ajuda na hora de debugar. Quando faltar algum parêmtro, será avisado exatamente
         // qual é. Quando usamos normal, a mensagem vem genérica (esperado 3 parâmetros mas só enviou 2, por exemplo)
-        const appointment = this.appointmentsRepository.create({
+
+        // o create não salva no banco de dados, apenas cria um objeto
+        const appointment = appointmentsRepository.create({
             provider,
             date: appointmentDate,
         });
+
+        await appointmentsRepository.save(appointment); // o save grava no banco de dados
 
         return appointment;
     }
