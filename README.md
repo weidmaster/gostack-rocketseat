@@ -233,3 +233,18 @@ module.exports = {
 ```docker stop <ID do container>``` para um container em execução
 
 ```docker start <ID do container>``` inicia um container
+
+## DBeaver
+
+Gerenciador de banco de dados universal para todas as plataformas
+
+https://dbeaver.io/
+
+### Configurações para PostgreSQL dentro do docker
+
+- Host: ```localhost```
+- Port: ```5432```
+- Database: ```postgres```
+- Username: ```postgres```
+- Password: ```<Senha definida no docker run>```
+- Aba PostgreSQL: marcar ```show all databases```
