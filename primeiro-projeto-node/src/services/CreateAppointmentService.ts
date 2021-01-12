@@ -14,7 +14,7 @@ import AppointmentsRepository from '../repositories/AppointmentsRepository';
  */
 
 interface Request {
-    provider: string;
+    provider_id: string;
     date: Date;
 }
 
@@ -24,7 +24,7 @@ interface Request {
  */
 
 class CreateAppointmentService {
-    public async execute({ date, provider }: Request): Promise<Appointment> {
+    public async execute({ date, provider_id }: Request): Promise<Appointment> {
         const appointmentsRepository = getCustomRepository(
             AppointmentsRepository,
         );
@@ -45,7 +45,7 @@ class CreateAppointmentService {
 
         // o create não salva no banco de dados, apenas cria um objeto
         const appointment = appointmentsRepository.create({
-            provider,
+            provider_id,
             date: appointmentDate,
         });
 

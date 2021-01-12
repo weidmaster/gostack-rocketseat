@@ -19,7 +19,7 @@ appointmentsRouter.get('/', async (request, response) => {
 // POST http://localhost:3333/appointments
 appointmentsRouter.post('/', async (request, response) => {
     try {
-        const { provider, date } = request.body;
+        const { provider_id, date } = request.body;
 
         const parsedDate = parseISO(date); // apenas transformação de dados não vai para serviço
 
@@ -27,7 +27,7 @@ appointmentsRouter.post('/', async (request, response) => {
 
         const appointment = await createAppointmentService.execute({
             date: parsedDate,
-            provider,
+            provider_id,
         });
 
         return response.json(appointment);
