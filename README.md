@@ -268,6 +268,29 @@ https://typeorm.io/#/
     "port": 5432,
     "username": "posgres",
     "password": "docker",
-    "database": "gostack_gobarber"
+    "database": "gostack_gobarber",
+    "migrations": [
+        "./src/database/migrations/*.ts"
+    ],
+    "cli": {
+        "migrationsDir": "./src/database/migrations"
+    }
 }
 ```
+
+- O typeorm pode ser usado tanto com typescript como javascript puro.
+  - adicionar script no **package.json** ```"typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"```
+
+#### Migrations
+
+Servem para versionar o banco de dados e ajudam a manter a consistência entre desenvolvedores.
+
+**Atenção!** Só altere migrations se ainda não foram para o controle de versão!
+
+```yarn typeorm migration:create -n <CreateEntities>``` cria uma migration com nome especificado
+
+```yarn typeorm migration:run``` roda as migrations
+
+```yarn typeorm migration:show``` exibe as migrations que foram executadas
+
+```yarn typeorm migration:revert``` desfaz a última migration
