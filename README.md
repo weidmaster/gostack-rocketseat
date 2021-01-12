@@ -234,13 +234,14 @@ module.exports = {
 
 ```docker start <ID do container>``` inicia um container
 
-## DBeaver
+## Manipulação de Banco de Dados
+### DBeaver
 
 Gerenciador de banco de dados universal para todas as plataformas
 
 https://dbeaver.io/
 
-### Configurações para PostgreSQL dentro do docker
+#### Configurações para PostgreSQL dentro do docker
 
 - Host: ```localhost```
 - Port: ```5432```
@@ -248,3 +249,25 @@ https://dbeaver.io/
 - Username: ```postgres```
 - Password: ```<Senha definida no docker run>```
 - Aba PostgreSQL: marcar ```show all databases```
+
+### TypeORM
+
+Ferramenta para manusear o banco de dados da aplicação com um maior nível de abstração nas consultas.
+
+https://typeorm.io/#/
+
+```yarn add typeorm pg``` instala o typeorm com o driver do PostreSQL
+
+- criar arquivo ```ormconfig.json``` na raíz do projeto
+- exemplo de configuração para PostreSQL
+
+```json
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "posgres",
+    "password": "docker",
+    "database": "gostack_gobarber"
+}
+```
