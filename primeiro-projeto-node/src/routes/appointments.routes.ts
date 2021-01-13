@@ -4,7 +4,11 @@ import { getCustomRepository } from 'typeorm';
 import AppointmentsRepository from '../repositories/AppointmentsRepository';
 import CreateAppointmentService from '../services/CreateAppointmentService';
 
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+
 const appointmentsRouter = Router();
+
+appointmentsRouter.use(ensureAuthenticated);
 
 // Rota - Deve se preocupar apenas com receber a requisição, chamar outro arquivo e devolver uma resposta
 // Quando temos mais funcionalidades além disso, provavelmente queremos abstrair em um serviço.
