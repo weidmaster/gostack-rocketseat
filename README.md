@@ -307,3 +307,7 @@ Json Web Token. Formado por cabeçalho, payload e assinatura.
 https://jwt.io/
 
 ```yarn add jsonwebtoken```
+
+## Upload de Arquivos
+
+```yarn add multer```
