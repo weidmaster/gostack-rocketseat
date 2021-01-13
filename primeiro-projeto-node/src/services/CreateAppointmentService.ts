@@ -1,6 +1,8 @@
 import { startOfHour } from 'date-fns';
 import { getCustomRepository } from 'typeorm';
 
+import AppError from '../errors/AppError';
+
 import Appointment from '../models/Appointment';
 import AppointmentsRepository from '../repositories/AppointmentsRepository';
 
@@ -37,7 +39,7 @@ class CreateAppointmentService {
         if (findAppointmentInSameDate) {
             // O serviço não tem acesso direto aos dados da requisição e resposta da rota. Então lançamentos a exceção
             // a ser tratada pela rota
-            throw Error('This appointment is already booked');
+            throw new AppError('This appointment is already booked');
         }
 
         // Utilizar parâmetros nomeados ajuda na hora de debugar. Quando faltar algum parêmtro, será avisado exatamente
