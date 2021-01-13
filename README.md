@@ -297,3 +297,13 @@ Servem para versionar o banco de dados e ajudam a manter a consistência entre d
 ```yarn typeorm migration:show``` exibe as migrations que foram executadas
 
 ```yarn typeorm migration:revert``` desfaz a última migration
+
+## Autenticação
+
+### JWT
+
+Json Web Token. Formado por cabeçalho, payload e assinatura.
+
+https://jwt.io/
+
+```yarn add jsonwebtoken```
